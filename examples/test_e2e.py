@@ -1,5 +1,6 @@
 import asyncio
 import time
+
 from memsearch import MemSearch
 
 mem = MemSearch(
@@ -10,9 +11,11 @@ mem = MemSearch(
 # 首先索引现有文件
 asyncio.run(mem.index())
 
+
 # 开始监视
 def on_event(event_type, summary, file_path):
     print(f"[{event_type}] {summary}")
+
 
 watcher = mem.watch(on_event=on_event)
 print("Watching for changes... (Ctrl+C to stop)")
